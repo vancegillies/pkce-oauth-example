@@ -1,0 +1,15 @@
+tasks:
+  build:
+    command:
+      - vite
+      - build
+    deps:
+      - ~:compile
+    platform: node
+  compile:
+    command: tsc
+    platform: node
+  dev:
+    command: vite
+    local: true
+    platform: node
