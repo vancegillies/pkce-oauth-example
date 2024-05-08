@@ -1,3 +1,7 @@
+function getCrypto() {
+  return crypto.subtle;
+}
+
 function generateRandomString(length: number) {
   var charset =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
@@ -11,31 +15,27 @@ function generateRandomString(length: number) {
 
 function sha256(plain: string) {
   // Returns the SHA-256 hash of the input string
-  return window.crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(plain),
-  );
+  return getCrypto().digest("SHA-256", new TextEncoder().encode(plain));
 }
 
-async function generateCodeVerifier() {
+export async function generateCodeVerifier() {
   // Generate a random code verifier of 128 characters
   return generateRandomString(128);
 }
 
-async function generateCodeChallenge(verifier: string) {
+export async function generateCodeChallenge(verifier: string) {
   // Generate the SHA-256 hash of the code verifier
-  var hashedVerifier = await sha256(verifier);
-  // Encode the hash as base64 and replace characters to make it URL-safe
-  var base64encoded = btoa(
-    String.fromCharCode.apply(null, new Uint8Array(hashedVerifier)),
-  )
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=/g, "");
-  return base64encoded;
+  const hashedVerifier = await sha256(verifier);
+
+  let str = "";
+  const bytes = new Uint8Array(hashedVerifier);
+  const len = bytes.byteLength;
+  for (var i = 0; i < len; i++) {
+    str += String.fromCharCode(bytes[i]);
+  }
+  return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
-// Example usage
 export async function generatePKCE() {
   var codeVerifier = await generateCodeVerifier();
   var codeChallenge = await generateCodeChallenge(codeVerifier);

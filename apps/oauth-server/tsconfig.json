@@ -1,4 +1,22 @@
-// https://nitro.unjs.io/guide/typescript
 {
-  "extends": "./.nitro/types/tsconfig.json"
+  "extends": "./.nitro/types/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../.moon/cache/types/apps/oauth-server",
+    "paths": {
+      "pkce": [
+        "../../packages/pkce/index.ts"
+      ],
+      "pkce/*": [
+        "../../packages/pkce/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../../packages/pkce"
+    }
+  ],
+  "include": [
+    "../../packages/pkce/**/*"
+  ]
 }

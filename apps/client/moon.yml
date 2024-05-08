@@ -1,3 +1,5 @@
+dependsOn:
+  - "pkce"
 tasks:
   build:
     command:

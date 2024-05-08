@@ -7,6 +7,12 @@
     </head>
     <body>
         <form action="/login" method="post">
+            <!-- hidden input -->
+            <input
+                type="hidden"
+                name="code_challenge"
+                value="{{code_challange}}"
+            />
             <label for="username">Username</label>
             <input type="text" id="username" name="username" />
             <label for="password">Password</label>

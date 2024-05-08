@@ -9,6 +9,10 @@ importers:
   .: {}
 
   apps/client:
+    dependencies:
+      pkce:
+        specifier: workspace:*
+        version: link:../../packages/pkce
     devDependencies:
       typescript:
         specifier: ^5.2.2
@@ -22,6 +26,9 @@ importers:
       '@types/node':
         specifier: ^20.12.10
         version: 20.12.10
+      pkce:
+        specifier: workspace:*
+        version: link:../../packages/pkce
     devDependencies:
       nitropack:
         specifier: latest
@@ -32,6 +39,8 @@ importers:
       nitropack:
         specifier: latest
         version: 2.9.6(@opentelemetry/api@1.8.0)
+
+  packages/pkce: {}
 
 packages:
 
