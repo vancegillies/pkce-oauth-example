@@ -5,5 +5,8 @@
   },
   "devDependencies": {
     "nitropack": "latest"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.10"
   }
 }
