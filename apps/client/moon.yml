@@ -10,6 +10,6 @@ tasks:
     command: tsc
     platform: node
   dev:
-    command: vite
+    command: vite --port 3000
     local: true
     platform: node
