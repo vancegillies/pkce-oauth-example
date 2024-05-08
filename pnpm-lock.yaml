@@ -23,6 +23,12 @@ importers:
         specifier: latest
         version: 2.9.6(@opentelemetry/api@1.8.0)
 
+  apps/resource-server:
+    devDependencies:
+      nitropack:
+        specifier: latest
+        version: 2.9.6(@opentelemetry/api@1.8.0)
+
 packages:
 
   /@cloudflare/kv-asset-handler@0.3.2:
