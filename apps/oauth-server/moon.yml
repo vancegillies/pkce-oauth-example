@@ -1,0 +1,14 @@
+tasks:
+  build:
+    command:
+    - nitro
+    - build
+    platform: node
+  dev:
+    command:
+    - nitro
+    - dev
+    - --port
+    - '3001'
+    local: true
+    platform: node
